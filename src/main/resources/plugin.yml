@@ -1,0 +1,13 @@
+name: CraftableSherds
+version: '${project.version}'
+main: me.gabemoreno.craftablesherds.CraftableSherds
+api-version: 1.20
+authors: [ gabemoreno ]
+description: Configurable recipes to make pottery sherds craftable.
+
+commands:
+  csreload:
+    description: Reload all CraftableSherd recipes.
+    usage: /<command>
+    aliases: [csr]
+    permission: craftablesherds.reload

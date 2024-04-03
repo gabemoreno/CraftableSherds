@@ -1,0 +1,195 @@
+# CraftableSherds Recipes Configuration
+#
+# This configuration file allows you to define custom crafting recipes for pottery sherds.
+
+# Instructions:
+# - Each recipe must have at least one ingredient.
+# - All defined ingredients must be utilized in the recipe's shape.
+# - Ingredients must refer to an obtainable material.
+# - To create an empty slot in a recipe's shape, use a character without a corresponding ingredient mapping.
+#   (by default, this is done using a space ' ')
+
+# IMPORTANT: After making changes to this file, use the '/csreload'
+# command in-game to apply the updates without needing to restart the server.
+
+recipes:
+  angler:
+    enabled: true # Set to true to disable this specific recipe.
+    shape: # Define the 3x3 crafting grid pattern where ingredients are represented by characters.
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients: # Associate each character in the shape with a material to be used as the ingredient.
+      A: "BRICK"
+      B: "FISHING_ROD"
+  archer:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "BOW"
+  arms_up:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "ARMOR_STAND"
+  blade:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "STONE_SWORD"
+  brewer:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "BREWING_STAND"
+  burn:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "FLINT_AND_STEEL"
+  danger:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "TNT"
+  explorer:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "MAP"
+  friend:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "EMERALD"
+  heart:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "POPPY"
+  heartbreak:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "WITHER_ROSE"
+  howl:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "BONE"
+  miner:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "STONE_PICKAXE"
+  mourner:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "SCULK"
+  plenty:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "CHEST"
+  prize:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "DIAMOND"
+  sheaf:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "WHEAT"
+  shelter:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "OAK_SAPLING"
+  skull:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "SKELETON_SKULL"
+  snort:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "TORCHFLOWER"
