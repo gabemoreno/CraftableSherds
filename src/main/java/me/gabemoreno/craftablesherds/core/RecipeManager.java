@@ -24,114 +24,6 @@ public class RecipeManager {
     private static final Logger logger = plugin.getLogger();
     private static FileConfiguration config;
 
-//    public static void loadRecipes() {
-//        plugin.reloadConfig();
-//        FileConfiguration config = plugin.getConfig();
-//        ConfigurationSection recipesSection = config.getConfigurationSection("recipes");
-//
-//        if (recipesSection == null) {
-//            logger.warning("Failed to load recipes. Missing section 'recipes' in config.");
-//            return;
-//        }
-//
-//        recipesLoop:
-//        for (String key : recipesSection.getKeys(false)) {
-//
-//            String path = "recipes." + key;
-//
-//            //check if disabled
-//            boolean disabled = config.getBoolean(path + ".disabled", false);
-//            if (disabled) continue;
-//
-//            //define result
-//            String resultID = key.toUpperCase() + "_POTTERY_SHERD";
-//
-//            Material resultMaterial = Material.getMaterial(resultID);
-//            if (resultMaterial == null) {
-//                logger.warning(String.format("Failed to load recipe '%s'. Invalid result material '%s'.", key, resultID));
-//                continue;
-//            }
-//
-//            ItemStack resultItem = new ItemStack(resultMaterial);
-//
-//            //define shape
-//            List<String> shape = config.getStringList(path + ".shape");
-//
-//            if (shape.size() != 3) {
-//                logger.warning(String.format("Failed to load recipe '%s'. Missing valid shape.", key));
-//                continue;
-//            }
-//
-//            Bukkit.getServer().getLogger().severe("PATH: " + path + "| " + key + ": " + Arrays.toString(shape.toArray()));
-//
-//            for (String row : shape) {
-//                if (row.length() != 3) {
-//                    logger.warning(String.format("Failed to load recipe '%s'. Missing valid shape.", key));
-//                    continue recipesLoop;
-//                }
-//            }
-//
-//
-//            NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
-//            ShapedRecipe recipe = new ShapedRecipe(namespacedKey, resultItem);
-//            recipe.shape(shape.get(0), shape.get(1), shape.get(2));
-//
-//            ConfigurationSection ingredientSection = config.getConfigurationSection(path + ".ingredients");
-//            if (ingredientSection == null) {
-//                logger.warning(String.format("Failed to load recipe '%s'. Missing ingredients.", key));
-//                continue;
-//            }
-//
-//            Set<String> charKeys = ingredientSection.getKeys(false);
-//
-//            if (charKeys.isEmpty()) {
-//                logger.warning(String.format("Failed to load recipe '%s'. Missing ingredients.", key));
-//                continue;
-//            }
-//
-//            //add ingredients mappings
-//            for (String charKey : charKeys) {
-//
-//                String shapeChars = shape.get(0) + shape.get(1) + shape.get(2);
-//
-//                if (!shapeChars.contains(charKey.charAt(0) + "")) {
-//                    logger.warning(String.format("Failed to load recipe '%s'. Ingredient '%s' not used in shape.", key, charKey));
-//                    continue recipesLoop;
-//                }
-//
-//                String ingredientID = ingredientSection.getString(charKey);
-//
-//                if (ingredientID == null) {
-//                    logger.warning(String.format("Failed to load recipe '%s'. Missing ingredient for key '%s'.", key, charKey));
-//                    continue recipesLoop;
-//                }
-//
-//                Material ingredientMaterial = Material.getMaterial(ingredientID);
-//
-//                if (ingredientMaterial == null) {
-//                    logger.warning(String.format("Failed to load recipe '%s'. Invalid ingredient material '%s'.", key, ingredientID));
-//                    continue recipesLoop;
-//                }
-//
-//                if (!ingredientMaterial.isItem()) {
-//                    logger.warning(String.format("Failed to load recipe '%s'. Invalid ingredient material '%s'. Must be obtainable.", key, ingredientID));
-//                    continue recipesLoop;
-//                }
-//
-//                recipe.setIngredient(charKey.charAt(0), ingredientMaterial);
-//            }
-//
-//            //add recipe to server
-//            if (Bukkit.getServer().addRecipe(recipe)) {
-//                registeredRecipes.add(namespacedKey);
-//            } else {
-//                logger.warning(String.format("Failed to add recipe '%s'. Does it already exist?", namespacedKey));
-//            }
-//        }
-//
-//        logger.info(String.format("Added %s recipes.", registeredRecipes.size()));
-//    }
-
     public static void unloadRecipes() {
 
         int removedCounter = 0; // Tracks the number of recipes successfully removed
@@ -201,45 +93,6 @@ public class RecipeManager {
         return new ItemStack(resultMaterial);
     }
 
-//    private static Material getResultMaterial(String recipeID) throws InvalidRecipeException {
-//        String resultID = recipeID.toUpperCase() + "_POTTERY_SHERD";
-//        Material resultMaterial = Material.getMaterial(resultID);
-//        if (resultMaterial == null) {
-//            throw new InvalidRecipeException(String.format("Failed to load recipe '%s'. Invalid result material '%s'.", recipeID, resultID));
-//        }
-//        return resultMaterial;
-//    }
-
-//    /**
-//     * Extracts the shape of a crafting recipe from the configuration.
-//     *
-//     * @param config The plugin's configuration.
-//     * @param recipeID The key identifying the recipe in the configuration.
-//     * @return A List of strings representing the shape of the recipe.
-//     */
-//    private static List<String> getRecipeShape(FileConfiguration config, String recipeID) {
-//        String path = "recipes." + recipeID + ".shape";
-//        return config.getStringList(path);
-//    }
-//
-//    /**
-//     * Validates the shape of a crafting recipe, ensuring it meets the expected dimensions.
-//     *
-//     * @param shape A list of strings representing the recipe's shape.
-//     * @param recipeID The recipe key, used for logging purposes.
-//     * @throws InvalidRecipeException If the shape is invalid (not 3x3).
-//     */
-//    private static void validateShape(List<String> shape, String recipeID) throws InvalidRecipeException {
-//        if (shape.size() != 3) {
-//            throw new InvalidRecipeException(String.format("Failed to load recipe '%s'. Missing valid shape.", recipeID));
-//        }
-//        for (String row : shape) {
-//            if (row.length() != 3) {
-//                throw new InvalidRecipeException(String.format("Failed to load recipe '%s'. Missing valid shape.", recipeID));
-//            }
-//        }
-//    }
-
     private static String[] loadShape(String recipeID) throws InvalidRecipeException {
         String path = "recipes." + recipeID + ".shape";
 
@@ -269,24 +122,6 @@ public class RecipeManager {
         recipe.shape(shape);
     }
 
-//    private static void addShape(String recipeID, ShapedRecipe recipe) throws InvalidRecipeException {
-//        String path = "recipes." + recipeID + ".shape";
-//        List<String> shape = config.getStringList(path);
-//
-//        //validation
-//        if (shape.size() != 3) {
-//            throw new InvalidRecipeException("Invalid shape.");
-//        }
-//
-//        for (String row : shape) {
-//            if (row.length() != 3) {
-//                throw new InvalidRecipeException("Invalid shape");
-//            }
-//        }
-//
-//        recipe.shape(shape.get(0), shape.get(1), shape.get(2));
-//
-//    }
 
     private static Map<Character, String> loadIngredients(String recipeID) throws InvalidRecipeException {
 
@@ -318,27 +153,6 @@ public class RecipeManager {
         return ingredients;
 
     }
-//
-//    private static void validateIngredients(Map<Character, String> ingredients) throws InvalidRecipeException {
-//        for (String ingredientID : ingredients.values()) {
-//            Material material = Material.getMaterial(ingredientID);
-//            if (material == null || !material.isItem()) {
-//                throw new InvalidRecipeException(String.format("Invalid or non-item ingredient material '%s'.", ingredientID));
-//            }
-//        }
-//    }
-
-//    private static Material validateIngredient(String ingredientID) throws InvalidRecipeException {
-//
-//        Material ingredient = Material.getMaterial(ingredientID);
-//
-//        if (ingredient == null || !ingredient.isItem()) {
-//            throw new InvalidRecipeException(String.format("Invalid or non-item ingredient material '%s'.", ingredientID));
-//        }
-//
-//        return ingredient;
-//
-//    }
 
     private static Map<Character, Material> validateIngredients(Map<Character, String> ingredients, ShapedRecipe recipe) throws InvalidRecipeException {
 
@@ -376,47 +190,6 @@ public class RecipeManager {
         }
 
     }
-
-//    private static void addIngredients(String recipeID, ShapedRecipe recipe) throws InvalidRecipeException {
-//        String path = "recipes." + recipeID + ".ingredients";
-//        ConfigurationSection ingredientsSection = config.getConfigurationSection(path);
-//
-//        if (ingredientsSection == null || ingredientsSection.getKeys(false).isEmpty()) {
-//            throw new InvalidRecipeException("Could not find ingredients.");
-//        }
-//
-//        String shapeChars = String.join("", recipe.getShape());
-//
-//        //validate charKey is used in shape
-//        for (String charKey : ingredientsSection.getKeys(false)) {
-//            if (!shapeChars.contains(charKey)) {
-//                throw new InvalidRecipeException(String.format("Ingredient '%s' not utilized in shape.", charKey));
-//            }
-//
-//            Material ingredientMaterial = getIngredientMaterial(ingredientsSection, charKey);
-//            recipe.setIngredient(charKey.charAt(0), ingredientMaterial);
-//        }
-//    }
-
-//    private static Material getIngredientMaterial(ConfigurationSection ingredientSection, String charKey) throws InvalidRecipeException {
-//        String ingredientID = ingredientSection.getString(charKey);
-//        Material ingredientMaterial = Material.getMaterial(ingredientID);
-//
-//        //validation
-//        if (ingredientMaterial == null || !ingredientMaterial.isItem()) {
-//            throw new InvalidRecipeException(String.format("Invalid or non-item ingredient material '%s'.", ingredientID));
-//        }
-//
-//        return ingredientMaterial;
-//    }
-
-//    private static void validateIngredient(String ingredientID) throws InvalidRecipeException {
-//        Material ingredientMaterial = Material.getMaterial(ingredientID);
-//        if (ingredientMaterial == null || !ingredientMaterial.isItem()) {
-//            throw new InvalidRecipeException(String.format("Invalid or non-item ingredient material '%s'.", ingredientID));
-//        }
-
-
 
     private static void registerRecipe(NamespacedKey namespacedKey, ShapedRecipe recipe) {
         if (Bukkit.getServer().addRecipe(recipe)) {
