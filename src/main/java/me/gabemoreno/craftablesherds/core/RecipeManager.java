@@ -26,25 +26,25 @@ public class RecipeManager {
 
     public static void unloadRecipes() {
 
-        int removedCounter = 0; // Tracks the number of recipes successfully removed
+        int removedCounter = 0;
 
         for (NamespacedKey key : registeredRecipes) {
 
             if (Bukkit.getServer().removeRecipe(key)) {
-                removedCounter++; // Increment if the recipe was successfully removed
+                removedCounter++;
             } else {
                 logger.warning(String.format("Failed to remove recipe '%s'. Does it exist?", key));
             }
 
         }
 
-        registeredRecipes.clear(); // Clear the list of registered recipes
+        registeredRecipes.clear();
         logger.info(String.format("Removed %s recipes.", removedCounter));
     }
 
     public static void reloadRecipes() {
-        unloadRecipes(); // Remove all currently loaded recipes
-        loadRecipes(); // Load recipes from configuration again
+        unloadRecipes();
+        loadRecipes();
     }
 
     public static void loadRecipes() {
