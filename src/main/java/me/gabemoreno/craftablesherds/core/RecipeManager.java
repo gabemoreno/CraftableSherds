@@ -11,10 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class RecipeManager {
@@ -197,6 +194,10 @@ public class RecipeManager {
         } else {
             logger.warning(String.format("Failed to add recipe '%s'. Does it already exist?", namespacedKey));
         }
+    }
+
+    public static List<NamespacedKey> getRegisteredRecipes() {
+        return Collections.unmodifiableList(registeredRecipes);
     }
 
 }
