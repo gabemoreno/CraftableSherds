@@ -29,7 +29,7 @@ public class CraftingListener implements Listener {
         if (!namespacedKey.getKey().equals(sherdID)) return;
 
         if (event.getView().getPlayer().hasPermission(String.format("craftablesherds.craft.%s", sherdID))) return;
-        
+
         event.getInventory().setResult(null);
     }
 }

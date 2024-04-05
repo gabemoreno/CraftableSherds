@@ -39,12 +39,12 @@ public class RecipeManager {
         logger.info(String.format("Removed %s recipes.", removedCounter));
     }
 
-    public static void reloadRecipes() {
+    public static LoadingOutcome reloadRecipes() {
         unloadRecipes();
-        loadRecipes();
+        return loadRecipes();
     }
 
-    public static void loadRecipes() {
+    public static LoadingOutcome loadRecipes() {
         plugin.reloadConfig();
         config = plugin.getConfig();
 
@@ -52,8 +52,10 @@ public class RecipeManager {
 
         if (!config.contains("recipes") || recipesSection == null) {
             logger.warning("Failed to load recipes. Missing section 'recipes' in config.");
-            return;
+            return LoadingOutcome.FAILURE;
         }
+
+        LoadingOutcome outcome = LoadingOutcome.SUCCESS;
 
         for (String recipeID : recipesSection.getKeys(false)) {
 
@@ -69,11 +71,13 @@ public class RecipeManager {
 
             } catch (InvalidRecipeException exception) {
                 logger.warning(String.format("Failed to load recipe '%s'. ", recipeID) + exception.getMessage());
+                outcome = LoadingOutcome.WARNING;
             }
 
         }
 
         logger.info(String.format("Added %s recipes.", registeredRecipes.size()));
+        return outcome;
     }
 
     private static boolean isRecipeEnabled(FileConfiguration config, String recipeID) {
