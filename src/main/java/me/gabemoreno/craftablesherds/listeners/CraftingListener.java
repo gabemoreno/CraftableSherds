@@ -1,15 +1,12 @@
 package me.gabemoreno.craftablesherds.listeners;
 
-import me.gabemoreno.craftablesherds.core.RecipeManager;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.Recipe;
-
-import java.util.List;
+import org.bukkit.inventory.ShapedRecipe;
 
 public class CraftingListener implements Listener {
 
@@ -18,25 +15,21 @@ public class CraftingListener implements Listener {
 
         Recipe craftingRecipe = event.getRecipe();
         if (craftingRecipe == null) return;
+        //add support later for shapeless recipes?
+        if (!(craftingRecipe instanceof ShapedRecipe)) return;
+        ShapedRecipe shapedRecipe = (ShapedRecipe) craftingRecipe;
 
         Material resultType = craftingRecipe.getResult().getType();
-        if (!resultType.name().endsWith("_POTTERY_SHERD")) return;
+        String sherdSuffix = "_POTTERY_SHERD";
+        if (!resultType.name().endsWith(sherdSuffix)) return;
+        String sherdID = resultType.name().replace(sherdSuffix, "").toLowerCase();
 
-        List<NamespacedKey> registeredRecipes = RecipeManager.getRegisteredRecipes();
+        NamespacedKey namespacedKey = shapedRecipe.getKey();
+        if (!namespacedKey.getNamespace().equals("craftablesherds")) return;
+        if (!namespacedKey.getKey().equals(sherdID)) return;
 
-        for (NamespacedKey namespacedKey : registeredRecipes) {
-
-            Recipe registeredRecipe = Bukkit.getServer().getRecipe(namespacedKey);
-
-            if (registeredRecipe == null) continue;
-            if (!registeredRecipe.equals(craftingRecipe)) continue;
-
-            String permission = String.format("craftablesherds.craft.%s", namespacedKey.getKey());
-            if (event.getView().getPlayer().hasPermission(permission)) return;
-
-            //should cancel crafting
-            event.getInventory().setResult(null);
-            break;
-        }
+        if (event.getView().getPlayer().hasPermission(String.format("craftablesherds.craft.%s", sherdID))) return;
+        
+        event.getInventory().setResult(null);
     }
 }
