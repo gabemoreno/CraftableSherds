@@ -14,7 +14,7 @@
 
 recipes:
   angler:
-    enabled: true # Set to true to disable this specific recipe.
+    enabled: true # Set to false to disable this specific recipe.
     shape: # Define the 3x3 crafting grid pattern where ingredients are represented by characters.
       - " A "
       - "ABA"

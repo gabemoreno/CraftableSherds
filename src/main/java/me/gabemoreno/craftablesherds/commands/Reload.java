@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class Reload implements CommandExecutor {
 
-    private final String prefix = ChatColor.YELLOW + "[CraftableSherds] ";
+    private final String prefix = ChatColor.GOLD + "[CraftableSherds] ";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
