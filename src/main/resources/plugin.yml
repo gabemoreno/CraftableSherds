@@ -11,7 +11,7 @@ commands:
     usage: /<command>
     aliases: [csr]
     permission: craftablesherds.reload
-    
+
 permissions:
   craftablesherds.craft.angler:
     description: Grants access to the recipe for crafting Angler Pottery Sherds
