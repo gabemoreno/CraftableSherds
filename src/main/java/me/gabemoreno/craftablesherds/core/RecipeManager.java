@@ -11,10 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class RecipeManager {
@@ -42,12 +39,12 @@ public class RecipeManager {
         logger.info(String.format("Removed %s recipes.", removedCounter));
     }
 
-    public static void reloadRecipes() {
+    public static LoadingOutcome reloadRecipes() {
         unloadRecipes();
-        loadRecipes();
+        return loadRecipes();
     }
 
-    public static void loadRecipes() {
+    public static LoadingOutcome loadRecipes() {
         plugin.reloadConfig();
         config = plugin.getConfig();
 
@@ -55,8 +52,10 @@ public class RecipeManager {
 
         if (!config.contains("recipes") || recipesSection == null) {
             logger.warning("Failed to load recipes. Missing section 'recipes' in config.");
-            return;
+            return LoadingOutcome.FAILURE;
         }
+
+        LoadingOutcome outcome = LoadingOutcome.SUCCESS;
 
         for (String recipeID : recipesSection.getKeys(false)) {
 
@@ -72,11 +71,13 @@ public class RecipeManager {
 
             } catch (InvalidRecipeException exception) {
                 logger.warning(String.format("Failed to load recipe '%s'. ", recipeID) + exception.getMessage());
+                outcome = LoadingOutcome.WARNING;
             }
 
         }
 
         logger.info(String.format("Added %s recipes.", registeredRecipes.size()));
+        return outcome;
     }
 
     private static boolean isRecipeEnabled(FileConfiguration config, String recipeID) {
@@ -197,6 +198,10 @@ public class RecipeManager {
         } else {
             logger.warning(String.format("Failed to add recipe '%s'. Does it already exist?", namespacedKey));
         }
+    }
+
+    public static List<NamespacedKey> getRegisteredRecipes() {
+        return Collections.unmodifiableList(registeredRecipes);
     }
 
 }

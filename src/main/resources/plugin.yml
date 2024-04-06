@@ -11,3 +11,65 @@ commands:
     usage: /<command>
     aliases: [csr]
     permission: craftablesherds.reload
+
+permissions:
+  craftablesherds.craft.angler:
+    description: Grants access to the recipe for crafting Angler Pottery Sherds
+    default: true
+  craftablesherds.craft.archer:
+    description: Grants access to the recipe for crafting Archer Pottery Sherds
+    default: true
+  craftablesherds.craft.arms_up:
+    description: Grants access to the recipe for crafting Arms Up Pottery Sherds
+    default: true
+  craftablesherds.craft.blade:
+    description: Grants access to the recipe for crafting Blade Pottery Sherds
+    default: true
+  craftablesherds.craft.brewer:
+    description: Grants access to the recipe for crafting Brewer Pottery Sherds
+    default: true
+  craftablesherds.craft.burn:
+    description: Grants access to the recipe for crafting Burn Pottery Sherds
+    default: true
+  craftablesherds.craft.danger:
+    description: Grants access to the recipe for crafting Danger Pottery Sherds
+    default: true
+  craftablesherds.craft.explorer:
+    description: Grants access to the recipe for crafting Explorer Pottery Sherds
+    default: true
+  craftablesherds.craft.friend:
+    description: Grants access to the recipe for crafting Friend Pottery Sherds
+    default: true
+  craftablesherds.craft.heart:
+    description: Grants access to the recipe for crafting Heart Pottery Sherds
+    default: true
+  craftablesherds.craft.heartbreak:
+    description: Grants access to the recipe for crafting Heartbreak Pottery Sherds
+    default: true
+  craftablesherds.craft.howl:
+    description: Grants access to the recipe for crafting Howl Pottery Sherds
+    default: true
+  craftablesherds.craft.miner:
+    description: Grants access to the recipe for crafting Miner Pottery Sherds
+    default: true
+  craftablesherds.craft.mourner:
+    description: Grants access to the recipe for crafting Mourner Pottery Sherds
+    default: true
+  craftablesherds.craft.plenty:
+    description: Grants access to the recipe for crafting Plenty Pottery Sherds
+    default: true
+  craftablesherds.craft.prize:
+    description: Grants access to the recipe for crafting Prize Pottery Sherds
+    default: true
+  craftablesherds.craft.sheaf:
+    description: Grants access to the recipe for crafting Sheaf Pottery Sherds
+    default: true
+  craftablesherds.craft.shelter:
+    description: Grants access to the recipe for crafting Shelter Pottery Sherds
+    default: true
+  craftablesherds.craft.skull:
+    description: Grants access to the recipe for crafting Skull Pottery Sherds
+    default: true
+  craftablesherds.craft.snort:
+    description: Grants access to the recipe for crafting Snort Pottery Sherds
+    default: true
