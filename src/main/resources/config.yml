@@ -193,3 +193,33 @@ recipes:
     ingredients:
       A: "BRICK"
       B: "TORCHFLOWER"
+
+# 1.21 sherds
+
+  flow:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "NAUTILUS_SHELL"
+  guster:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "WIND_CHARGE"
+  scrape:
+    enabled: true
+    shape:
+      - " A "
+      - "ABA"
+      - " A "
+    ingredients:
+      A: "BRICK"
+      B: "STONE_AXE"
