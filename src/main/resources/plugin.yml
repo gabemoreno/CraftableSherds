@@ -73,3 +73,12 @@ permissions:
   craftablesherds.craft.snort:
     description: Grants access to the recipe for crafting Snort Pottery Sherds
     default: true
+  craftablesherds.craft.flow:
+    description: Grants access to the recipe for crafting Flow Pottery Sherds
+    default: true
+  craftablesherds.craft.guster:
+    description: Grants access to the recipe for crafting Guster Pottery Sherds
+    default: true
+  craftablesherds.craft.scrape:
+    description: Grants access to the recipe for crafting Scrape Pottery Sherds
+    default: true
