@@ -15,7 +15,7 @@ public class CraftingListener implements Listener {
 
         Recipe craftingRecipe = event.getRecipe();
         if (craftingRecipe == null) return;
-        //add support later for shapeless recipes?
+        //TODO: Shapeness recipe support
         if (!(craftingRecipe instanceof ShapedRecipe)) return;
         ShapedRecipe shapedRecipe = (ShapedRecipe) craftingRecipe;
 

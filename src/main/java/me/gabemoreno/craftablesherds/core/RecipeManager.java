@@ -108,12 +108,12 @@ public class RecipeManager {
 
     private static void validateShape(List<String> shape) throws InvalidRecipeException {
         if (shape.size() != 3) {
-            throw new InvalidRecipeException("Invalid recipe shape.");
+            throw new InvalidRecipeException("Invalid recipe shape: must be 3 rows of 3 characters.");
         }
 
         for (String row : shape) {
             if (row.length() != 3) {
-                throw new InvalidRecipeException("Invalid recipe shape");
+                throw new InvalidRecipeException("Invalid recipe shape: must be 3 rows of 3 characters.");
             }
         }
     }
